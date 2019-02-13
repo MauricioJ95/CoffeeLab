@@ -6,6 +6,9 @@ function doesPasswordMatch() {
     var Password = document.getElementById('password').value;
     var ConfirmPassword = document.getElementById('confirmpassword').value;
 
+    if (Password == '' || ConfirmPassword == '') {
+        return false;
+    }
     return Password == ConfirmPassword;
 }
 
@@ -23,7 +26,7 @@ function onFormSubmit() {
     }
 
     if (!doesPasswordMatch()) {
-        alert('Password does not match.');
+        alert('Please ensure password and password confirm fields are not blank and match.');
         return false;
     }
 
