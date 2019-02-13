@@ -1,13 +1,17 @@
-﻿<script type="text/javascript" src="Scripts/RegisterScript.js"></script>
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<script type="text/javascript" src="Scripts/RegisterValidation.js"></script>
 <link rel="stylesheet" href="Content/Register.css">
 
 
-<form action="AddUser">
-    <p>First Name</p><input name="FirstName" placeholder="John"/>
+<form action="AddUser" method="post" onsubmit="return onFormSubmit()" id="Register-form">
+    <p>First Name</p><input name="FirstName" placeholder="John" />
     <p>Last Name</p><input name="LastName" placeholder="Smith" />
-    <p>Password</p><input type="Password" name="Password" id="password" placeholder="Daboss212"/>
-    <p>Confirm Password</p><input type="password" name="ConfirmPassword" id="confirmpassword" placeholder="Daboss212"/>
-    <p>Email</p><input type="Email" id="email" placeholder="geoffm22@gmail.com"/>
+    <p>Password</p><input type="Password" name="Password" id="password" placeholder="Daboss212" />
+    <p>Confirm Password</p><input type="password" name="ConfirmPassword" id="confirmpassword" placeholder="Daboss212" />
+    <p>Email</p><input type="Email" id="email" placeholder="geoffm22@gmail.com" />
     <p>Phone Number</p><input name="PhoneNumb" id="phoneNumber" placeholder="111-222-3333" />
 
     <input type="submit" />
