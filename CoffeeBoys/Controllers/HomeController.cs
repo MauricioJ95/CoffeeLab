@@ -11,6 +11,7 @@ namespace CoffeeBoys.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.CurrentUser = (User)Session["CurrentUser"];
             return View();
         }
 
@@ -30,6 +31,35 @@ namespace CoffeeBoys.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+        public ActionResult UserDetails(User newUser)
+        {
+            //add sessions
+            if (Session["CurrentUser"] != null)
+            {
+                newUser = (User)Session["CurrentUser"];
+                ViewBag.CurrentUser = newUser;
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.CurrentUser = newUser;
+                    Session["CurrentUser"] = newUser;
+                    return View();
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Registration failed. Try again.";
+                    return View("Error");
+                }
+            }
+        }
+        public ActionResult LogOut()
+        {
+            Session.Remove("CurrentUser");
+            return RedirectToAction("Index");
         }
         public ActionResult AddUser(User u)
         {
